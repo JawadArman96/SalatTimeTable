@@ -1,1 +1,1 @@
-web: gunicorn 'salat.wsgi'
+web: gunicorn salat.wsgi --log-file -
