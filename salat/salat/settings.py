@@ -28,7 +28,9 @@ DEBUG = True
 
 # ALLOWED_HOSTS = []
 # ALLOWED_HOST = ['*']
-ALLOWED_HOSTS = ["salattimetable-production.up.railway.app"]
+# ALLOWED_HOSTS = ["salattimetable-production.up.railway.app"]
+ALLOWED_HOSTS = ["salattimetable.onrender.com"]
+
 
 
 # Configure Static Settings
