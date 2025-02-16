@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from .models import Task
 from .prayer_shedule import PrayerSchedule
@@ -27,4 +28,29 @@ def home(request):
     })
 
 
-# Create your views here.
+def product_list(request):
+    persons = [
+        {"name": "John"},
+        {"name": "William"},
+        {"name": "Rutchel"}
+    ]
+
+    products = [
+        {"name": "KS Ultra Clean", "price": 2168},
+        {"name": "Crossiant", "price": 998},
+        {"name": "Grape", "price": 1598},
+        {"name": "Paprika (Capsicum)", "price": 1298},
+        {"name": "Mango", "price": 1598}
+    ]
+
+    context = {
+        "persons": persons,
+        "products": products
+    }
+
+    return render(request, "products_list.html", 
+        {
+            "persons": json.dumps(persons),
+            "products": products
+        }
+    )
