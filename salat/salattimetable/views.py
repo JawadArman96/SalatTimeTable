@@ -36,11 +36,11 @@ def product_list(request):
     ]
 
     products = [
-        {"name": "KS Ultra Clean", "price": 2168},
+        {"name": "Banana", "price": 2168},
         {"name": "Crossiant", "price": 998},
         {"name": "Grape", "price": 1598},
         {"name": "Paprika (Capsicum)", "price": 1298},
-        {"name": "Mango", "price": 1598}
+        {"name": "Muffin", "price": 1598}
     ]
 
     context = {
@@ -51,6 +51,6 @@ def product_list(request):
     return render(request, "products_list.html", 
         {
             "persons": json.dumps(persons),
-            "products": products
+            "products": json.dumps(products)
         }
     )

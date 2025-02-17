@@ -40,27 +40,38 @@
 <h3>Total Amount to Pay</h3>
 <div id="totals"></div>
 
-<button onclick="calculateTotal()">Calculate</button>
+
+<button onclick="window.location.href='{% url 'home' %}'"
+        style="padding: 10px 20px; background-color: blue; color: white; text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+    Home
+</button>
+
+<button onclick="calculateTotal()"
+        style="padding: 10px 20px; background-color: blue; color: white; text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+        Calculate
+</button>
+
 
 
 <script type="application/json" id="persons-data">
     {{ persons|safe }}
 </script>
 
+<script type="application/json" id="products-data">
+    {{ products|safe }}
+</script>
+
 <script>
-const products = [
-    { name: "KS Ultra Clean", price: 2168 },
-    { name: "Crossiant", price: 998 },
-    { name: "Grape", price: 1598 },
-    { name: "Paprika (Capsicum)", price: 1298 },
-    { name: "Mango", price: 1598 }
-];
+
+
+const products = JSON.parse(document.getElementById("products-data").textContent);
+
+
+console.log("DEBUG 202502181248:" , products);  // Check output in browser console
+
 
 const peoples = JSON.parse(document.getElementById("persons-data").textContent);  // JSON.parse('{{ persons|escapejs }}'); //'{{ persons|escapejs }}';//["John", "William", "Smith"];
-// const people = ["John", "William", "Smith"]
 const people = peoples.map(person => person.name);
-//const people = people_list
-console.log("DEBUG:" , people)
 
 // Function to create table dynamically
 function generateTable() {
