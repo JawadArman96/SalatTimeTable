@@ -1,18 +1,14 @@
 import json
 from django.shortcuts import render
-from .models import Task
+from django.contrib.auth.models import User
 from .prayer_shedule import PrayerSchedule
+# from .models import Task
 
 
 def home(request):
-    tasks = Task.objects.all()
+    # tasks = Task.objects.all()
     schedule = PrayerSchedule("Tokyo", "Japan") 
     schedule.set_up_schedule()
-    # print(schedule.time_chart_start)
-    # print(schedule.time_chart_end)
-    # print(schedule.time_chart_end["Fajr"])
-    # print(schedule.date)
-    # print(schedule.day)
     timeTable = [
          { "prayer": "Fajr", "starttime" : schedule.time_chart_start["Fajr"], "endtime" : schedule.time_chart_end["Fajr"] },
          { "prayer": "Dhuhr", "starttime" : schedule.time_chart_start["Dhuhr"], "endtime" : schedule.time_chart_end["Dhuhr"] },
@@ -29,11 +25,8 @@ def home(request):
 
 
 def product_list(request):
-    persons = [
-        {"name": "John"},
-        {"name": "William"},
-        {"name": "Rutchel"}
-    ]
+    users = User.objects.all()
+    persons = [  { "name" : user.username } for user in users ]
 
     products = [
         {"name": "Banana", "price": 2168},
