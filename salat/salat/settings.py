@@ -27,9 +27,9 @@ SECRET_KEY = 'django-insecure-yp!%u4!an$o88rdyf$mfp^0_tzbqjd%2dsc3)josng)9_xz4*r
 DEBUG = True
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOST = ['*']
+# ALLOWED_HOST = ['*']
 # ALLOWED_HOSTS = ["salattimetable-production.up.railway.app"]
-# ALLOWED_HOSTS = ["salattimetable.onrender.com"]
+ALLOWED_HOSTS = ["salattimetable.onrender.com"]
 
 
 
