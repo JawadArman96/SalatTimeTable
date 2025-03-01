@@ -41,9 +41,14 @@
 <div id="totals"></div>
 
 
+<button onclick="window.location.href='{% url 'dashboard' %}'"
+        style="padding: 10px 20px; background-color: blue; color: white; text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
+    User Dashboard
+</button>
+
 <button onclick="window.location.href='{% url 'home' %}'"
         style="padding: 10px 20px; background-color: blue; color: white; text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
-    Home
+        Prayer timetable
 </button>
 
 <button onclick="calculateTotal()"

@@ -2,6 +2,9 @@ import json
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from .prayer_shedule import PrayerSchedule
+from .models import UserAccounts
+from django.template import loader
+from django.http import HttpResponse
 # from .models import Task
 
 
@@ -47,3 +50,22 @@ def product_list(request):
             "products": json.dumps(products)
         }
     )
+
+
+def dashboard(request):
+    user_data = UserAccounts.objects.all()
+    current_user = request.user
+    username = current_user.username
+    # print(user_accounts)
+    desired_user = None
+    for user_info in user_data:
+        if(user_info.name.lower() == username):
+            desired_user = { "name" : user_info.name, "balance" : user_info.balance, "due" : user_info.due }
+            print(desired_user)
+    if desired_user == None:
+        print("DEBUG: No matching user found")
+    return render(request, "dashboard.html", {
+        "useracc" : desired_user 
+    })
+
+

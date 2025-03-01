@@ -23,36 +23,20 @@
     </style>
 </head>
 <body>
-    <h2> Date: {{ date }} </h2>
-    <h2>  {{ day }} </h2>
-    <h1>Salat Time Table</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Prayer</th>
-                <th>Start time</th>
-                <th>End time </th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in timeTable %}
-                <tr>
-                    <td>{{ row.prayer }}</td>
-                    <td>{{ row.starttime }}</td>
-                    <td>{{ row.endtime }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    
+    <h2>User Dashboard</h2>
+    <h1>Welcome {{ useracc.name }} !</h1>
+    <h1>Your current balance : {{ useracc.balance }} </h1>
+    <h1>Your current due : {{ useracc.due }} </h1>
+
+
     <button onclick="window.location.href='{% url 'product_list' %}'"
         style="padding: 10px 20px; background-color: blue; color: white; text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
         Split Calculation
     </button>
 
-    <button onclick="window.location.href='{% url 'dashboard' %}'"
+    <button onclick="window.location.href='{% url 'home' %}'"
         style="padding: 10px 20px; background-color: blue; color: white; text-decoration: none; border-radius: 5px; border: none; cursor: pointer;">
-        User Dashboard
+        Prayer timetable
     </button>
 </body>
 </html>
