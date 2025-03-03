@@ -7,9 +7,13 @@ from django.template import loader
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect("dashboard")  # Redirect to dashboard if already logged in
+
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -28,6 +32,7 @@ def logout_view(request):
     return redirect("login_view")  # Redirect to login page after logout
 
 
+@login_required
 def home(request):
     # tasks = Task.objects.all()
     schedule = PrayerSchedule("Tokyo", "Japan") 
@@ -47,6 +52,7 @@ def home(request):
     })
 
 
+@login_required
 def product_list(request):
     users = User.objects.all()
     persons = [  { "name" : user.username } for user in users ]
@@ -72,6 +78,7 @@ def product_list(request):
     )
 
 
+@login_required
 def dashboard(request):
     user_data = UserAccounts.objects.all()
     current_user = request.user
